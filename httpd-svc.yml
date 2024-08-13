@@ -1,0 +1,15 @@
+# httpd-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpd-frontend
+  namespace: grras-project
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30311  # External port to access from outside the cluster
+  selector:
+    app: httpd-frontend
+

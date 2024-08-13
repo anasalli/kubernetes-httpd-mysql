@@ -1,0 +1,13 @@
+# mysql-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-backend
+  namespace: grras-project
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql-backend
+  clusterIP: None  # Headless service for direct pod-to-pod communication
+

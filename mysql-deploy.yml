@@ -1,0 +1,31 @@
+# mysql-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-backend
+  namespace: grras-project
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql-backend
+  template:
+    metadata:
+      labels:
+        app: mysql-backend
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "redhat"
+        - name: MYSQL_DATABASE
+          value: "my-database"
+        - name: MYSQL_USER
+          value: "anas"
+        - name: MYSQL_PASSWORD
+          value: "anas@1"
+        ports:
+        - containerPort: 3306
+
